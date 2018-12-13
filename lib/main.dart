@@ -61,16 +61,17 @@ class ListPage extends StatelessWidget {
     bloc.pageName.add(pageName);
     return StreamBuilder(
       stream: bloc.results,
-      builder: (BuildContext context, AsyncSnapshot<List<Contribution>> snapshot) {
-        if(!snapshot.hasData)
+      builder:
+          (BuildContext context, AsyncSnapshot<List<Contribution>> snapshot) {
+        if (!snapshot.hasData)
           return Center(
             child: CircularProgressIndicator(),
           );
         return ListView.builder(
             itemCount: snapshot.data.length,
             itemBuilder: (context, index) => ListTile(
-          title: Text('${snapshot.data[index].title}'),
-        ));
+                  title: Text('${snapshot.data[index].title}'),
+                ));
       },
     );
   }
